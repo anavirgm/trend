@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>TRENDSETTER | Next-Gen Style</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&amp;family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <style type="text/tailwindcss">
+        @layer base {
+            body {
+                font-family: 'Space Grotesk', sans-serif;
+                @apply bg-[#f0f0f0] text-black overflow-x-hidden;
+            }
+            h1, h2, h3, .font-heading {
+                font-family: 'Unbounded', sans-serif;
+            }
+        }.neo-brutalism-card {
+            @apply border-4 border-black bg-white shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-all duration-300;
+        }.product-card:hover {
+            @apply border-8 -translate-x-1 -translate-y-1 shadow-[12px_12px_0px_0px_rgba(0,0,0,1)];
+        }
+        .product-card:hover .wishlist-heart {
+            @apply scale-110 opacity-100 translate-y-0;
+            animation: spring-pop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .product-card:hover .product-img {
+            animation: wiggle 0.4s ease-in-out infinite alternate;
+        }
+        .quick-view-trigger:focus ~ .quick-view-modal,
+        .quick-view-trigger:active ~ .quick-view-modal {
+            @apply translate-x-0 opacity-100 pointer-events-auto;
+        }@keyframes spring-pop {
+            0% { transform: scale(0) translateY(20px); }
+            70% { transform: scale(1.2) translateY(-5px); }
+            100% { transform: scale(1) translateY(0); }
+        }
+        @keyframes wiggle {
+            0% { transform: rotate(0deg) scale(1); }
+            50% { transform: rotate(2deg) scale(1.02); }
+            100% { transform: rotate(-2deg) scale(1.02); }
+        }
+        @keyframes pulse-soft {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(0.95); }
+        }
+        .pulse-viewing {
+            animation: pulse-soft 2s infinite;
+        }
+        .neo-brutalism-button {
+            @apply border-4 border-black px-6 py-3 font-black uppercase shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] active:shadow-none active:translate-x-[4px] active:translate-y-[4px] transition-all;
+        }
+        .ticker-wrap {
+            @apply overflow-hidden whitespace-nowrap bg-black text-white py-2;
+        }
+        .ticker-content {
+            display: inline-block;
+            animation: ticker 30s linear infinite;
+        }
+        @keyframes ticker {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        @keyframes floating {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+        .spin-slow {
+            animation: spin 8s linear infinite;
+        }
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+    </style>
+    <script id="tailwind-config">
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        "vibrant-pink": "#ff00ff",
+                        "vibrant-yellow": "#ffff00",
+                        "vibrant-green": "#00ff00",
+                        "vibrant-blue": "#0066ff",
+                    },
+                },
+            },
+        }
+    </script>
+</head>
+
+<body>
+    <div class="ticker-wrap sticky top-0 z-[100] border-b-4 border-black">
+        <div class="ticker-content flex gap-12 text-sm font-bold uppercase tracking-wider">
+            <span>🔥 Alex from NYC just bought "Sonic S-1 Studio"</span>
+            <span>✨ 24 people are viewing "Lumina 35mm" right now</span>
+            <span>🚀 New Drop: Veloce Runner sold 45 pairs in 10 mins</span>
+            <span>🔥 Sarah from Berlin just bought "Horizon Chrono"</span>
+            <span>✨ Limited stock remaining on "Culinary Tools"</span>
+        </div>
+    </div>
+    <header class="bg-vibrant-yellow border-b-4 border-black py-4 px-6 relative z-50">
+        <div class="max-w-[1440px] mx-auto flex items-center justify-between">
+            <div class="flex items-center gap-12">
+                <div class="flex items-center gap-2">
+                    <span class="material-symbols-outlined text-4xl fill-1">bolt</span>
+                    <span class="text-3xl font-black tracking-tighter uppercase italic">Trend.</span>
+                </div>
+                <nav class="hidden lg:flex gap-8 font-bold uppercase text-sm">
+                    <a class="hover:underline decoration-4 underline-offset-4" href="#">Drop Shop</a>
+                    <a class="hover:underline decoration-4 underline-offset-4" href="#">Archive</a>
+                    <a class="hover:underline decoration-4 underline-offset-4" href="#">Culture</a>
+                    <a class="text-vibrant-pink" href="#">Live Sale</a>
+                </nav>
+            </div>
+            <div class="flex items-center gap-4">
+                <div class="hidden md:flex items-center border-4 border-black bg-white px-4 py-1">
+                    <input class="border-none focus:ring-0 text-sm font-bold uppercase w-48 bg-transparent"
+                        placeholder="FIND DRIPS..." type="text" />
+                    <span class="material-symbols-outlined">search</span>
+                </div>
+                <button class="neo-brutalism-button bg-vibrant-pink p-2 flex items-center justify-center">
+                    <span class="material-symbols-outlined">shopping_cart</span>
+                </button>
+            </div>
+        </div>
+    </header>
+    <main>
+        <section class="relative min-h-[85vh] flex items-center bg-vibrant-blue overflow-hidden px-6">
+            <div class="absolute inset-0 opacity-20"
+                style="background-image: radial-gradient(#000 2px, transparent 2px); background-size: 30px 30px;"></div>
+            <div class="max-w-7xl mx-auto w-full relative grid grid-cols-12 gap-8 items-center">
+                <div class="col-span-12 lg:col-span-7 z-20">
+                    <h2
+                        class="text-[120px] font-black leading-[0.85] text-white tracking-tighter uppercase italic mix-blend-difference">
+                        WEAR<br />THE<br />FUTURE
+                    </h2>
+                    <div class="mt-8 flex flex-col items-start gap-6">
+                        <p class="bg-black text-white p-4 font-bold text-xl inline-block border-2 border-white">
+                            CURATED STREETWEAR FOR THE NEW ERA.
+                        </p>
+                        <button class="neo-brutalism-button bg-vibrant-green text-black text-2xl px-12 py-6">
+                            COP THE DROP
+                        </button>
+                    </div>
+                </div>
+                <div class="col-span-12 lg:col-span-5 relative h-[600px] hidden lg:block">
+                    <div class="absolute top-0 right-0 w-80 h-80 floating z-10">
+                        <img alt="Shoes"
+                            class="w-full h-full object-cover border-8 border-black shadow-[20px_20px_0px_0px_rgba(255,0,255,1)]"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDaFMM2XeEPe-L5b1eZ75LA9OO5go2dur5vwvLvJsJGjaVCDzOULkagKco0rkM2cmkGZcpcthZ7cBqXewdKy6_ypaPNmVPSuZpovtyMMSKA5nU545ZkyXo4-zBkxXwEp7-1eZzKJU-O1fYzk0dmmSyc9iVCgOKdo7ZDf2Qg8QDFjAx7fkCI9avyUR7-k-n8yJx-G0e3kvxoc1lUxTByjBzqoToEBvigvRQwMrfBngZFTvPO1fPlEv_yT-g2PDDdRfdwGW7SG6f0580" />
+                    </div>
+                    <div class="absolute bottom-10 left-0 w-64 h-64 floating z-30" style="animation-delay: -1.5s">
+                        <img alt="Headphones"
+                            class="w-full h-full object-cover border-8 border-black shadow-[20px_20px_0px_0px_rgba(255,255,0,1)]"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCpcC_ryws9AXPfdbs153u3PEdAxyHQydx_1_nz6yAp00MWUsj9w48F-NpLfPW3GQ2nZzYOdLIw6Qd1T2iKw1lt91PAWvPs4vnjG_QfbtUizaodkOLh4yHmTMGS6wmaR0fb_ET17AVcAUAWmDez7_3NO6RZQkG6uCzpf5MAUUSMlvjhjgvrb4Pzg2bOQi0IL7z6gwEN8osdPILvPl9L1oavautEjs1FTbHEMc2ERm6qWiVRBKCMeiJ7DDGvwDMgr-jChLhUvCBtAmk" />
+                    </div>
+                    <div
+                        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-vibrant-pink rounded-full border-4 border-black -z-0">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="bg-black text-white py-16 border-y-8 border-black">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="flex flex-col md:flex-row items-center justify-between gap-12">
+                    <div class="text-center md:text-left">
+                        <h3 class="text-5xl font-black italic uppercase text-vibrant-yellow mb-2">FLASH SALE</h3>
+                        <p class="text-vibrant-green font-bold text-xl uppercase tracking-widest">Ending Soon. Don't
+                            Sleep.</p>
+                    </div>
+                    <div class="flex gap-4">
+                        <div class="neo-brutalism-card bg-white text-black p-4 text-center min-w-[100px]">
+                            <div class="text-4xl font-black">02</div>
+                            <div class="text-xs font-bold uppercase">Hours</div>
+                        </div>
+                        <div class="neo-brutalism-card bg-white text-black p-4 text-center min-w-[100px]">
+                            <div class="text-4xl font-black">45</div>
+                            <div class="text-xs font-bold uppercase">Mins</div>
+                        </div>
+                        <div class="neo-brutalism-card bg-white text-black p-4 text-center min-w-[100px]">
+                            <div class="text-4xl font-black">12</div>
+                            <div class="text-xs font-bold uppercase">Secs</div>
+                        </div>
+                    </div>
+                    <div class="w-full md:w-80">
+                        <div class="flex justify-between font-bold text-sm mb-2 uppercase">
+                            <span>Items Claimed</span>
+                            <span class="text-vibrant-pink">87%</span>
+                        </div>
+                        <div class="h-6 border-4 border-white bg-slate-800">
+                            <div class="h-full bg-vibrant-pink w-[87%] border-r-4 border-white"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="max-w-[1440px] mx-auto px-6 py-24">
+            <div class="grid grid-cols-12 gap-8">
+                <div
+                    class="col-span-12 lg:col-span-6 neo-brutalism-card product-card bg-vibrant-green overflow-hidden p-0 relative group">
+                    <div class="relative aspect-video overflow-hidden">
+                        <img alt="Interior"
+                            class="product-img w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCogQUUdLjBDBPEHKZ2Ejn8jl4TfewTUlXBG4hzsWbO0x0Jidn2jLZwx7V754DYPtKNJI8KdjUmPG8v5j-ar6GvBNTcOW_BaEA7eo3OlqyD5zJrajK5V725l8ccDxbZwhwvug656NCReYRtCT0L4tNOkr5qklKEehII7Gro2h2NXTIwWQfAfHYwynh--0YSjtbWuuvLhxG6JHTX6Pomv88c9ZUryBhGsHviw1iLerMcz8l3-k9RbkMsW0NRe4UXCa0-oIkrSbkawXU" />
+                        <div
+                            class="absolute top-6 left-6 bg-black text-white px-6 py-2 font-black uppercase italic text-2xl">
+                            VIBE CHECK</div>
+                        <button
+                            class="wishlist-heart absolute top-6 right-6 bg-white border-4 border-black p-2 opacity-0 scale-50 transition-all">
+                            <span class="material-symbols-outlined text-vibrant-pink fill-1">favorite</span>
+                        </button>
+                    </div>
+                    <div class="p-8 border-t-4 border-black flex justify-between items-end relative overflow-hidden">
+                        <div>
+                            <div class="flex items-center gap-3 mb-1">
+                                <h4 class="text-4xl font-black uppercase">Modern Living</h4>
+                                <span
+                                    class="pulse-viewing flex items-center gap-1 bg-black text-white text-[10px] font-black px-2 py-0.5 rounded-full">
+                                    <span class="w-1.5 h-1.5 bg-vibrant-green rounded-full"></span> 12 VIEWING
+                                </span>
+                            </div>
+                            <p class="font-bold text-xl">$2,499.00</p>
+                        </div>
+                        <div class="relative">
+                            <button class="quick-view-trigger neo-brutalism-button bg-black text-white">VIEW</button>
+                            <div
+                                class="quick-view-modal fixed top-0 right-0 h-full w-96 bg-white border-l-8 border-black z-[200] translate-x-full opacity-0 pointer-events-none transition-all duration-500 p-8 shadow-2xl">
+                                <div class="flex justify-between items-center mb-8">
+                                    <h5 class="text-2xl font-black uppercase">Quick View</h5>
+                                    <button class="material-symbols-outlined font-black">close</button>
+                                </div>
+                                <img alt="Preview" class="w-full aspect-square object-cover border-4 border-black mb-6"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuCogQUUdLjBDBPEHKZ2Ejn8jl4TfewTUlXBG4hzsWbO0x0Jidn2jLZwx7V754DYPtKNJI8KdjUmPG8v5j-ar6GvBNTcOW_BaEA7eo3OlqyD5zJrajK5V725l8ccDxbZwhwvug656NCReYRtCT0L4tNOkr5qklKEehII7Gro2h2NXTIwWQfAfHYwynh--0YSjtbWuuvLhxG6JHTX6Pomv88c9ZUryBhGsHviw1iLerMcz8l3-k9RbkMsW0NRe4UXCa0-oIkrSbkawXU" />
+                                <p class="font-bold mb-4">The ultimate interior upgrade. Limited edition modular seating
+                                    system.</p>
+                                <button class="neo-brutalism-button w-full bg-vibrant-green">ADD TO CART</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="col-span-12 md:col-span-6 lg:col-span-3 neo-brutalism-card product-card bg-vibrant-pink flex flex-col relative group">
+                    <div class="p-4 border-b-4 border-black flex justify-between items-center bg-white">
+                        <div class="flex flex-col">
+                            <h4 class="font-black uppercase text-lg leading-none">Horizon Chrono</h4>
+                            <span class="pulse-viewing text-[10px] font-black text-vibrant-pink">8 ACTIVE USERS</span>
+                        </div>
+                    </div>
+                    <div class="flex-1 aspect-square overflow-hidden relative">
+                        <img alt="Watch" class="product-img w-full h-full object-cover"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDHLSbvSDpZzSerZdTsXJmdiSinuQX1TUH2-e7Y2TTgel-F71fY8Hlx6IVEVPaU2cpkbTesra9mODHayy4HKMwMdjzpjof4xj8vyE7jf-xi6qcaEu6wHJLsA5wLhZkBqTvSg_ai2hd3jfiEuATW-5rpBd1hFoKsqn1tGmAcWd97_HX5dA-JowE-x4m5NZ8kC982ynhCKPAQ25SomQPGooj5SY8CzHB1PuOIPWQdY7xu6JHvIgiZAqmWahM8Ra_y-k5ps3j--c2hCXY" />
+                        <button
+                            class="wishlist-heart absolute bottom-4 right-4 bg-white border-4 border-black p-2 opacity-0 scale-50 transition-all">
+                            <span class="material-symbols-outlined text-vibrant-pink fill-1">favorite</span>
+                        </button>
+                    </div>
+                    <div class="p-4 bg-white border-t-4 border-black flex justify-between items-center">
+                        <span class="font-black text-xl">$185.00</span>
+                        <div class="relative">
+                            <button
+                                class="quick-view-trigger material-symbols-outlined font-black text-3xl hover:text-vibrant-pink transition-colors">add_circle</button>
+                            <div
+                                class="quick-view-modal fixed top-0 right-0 h-full w-96 bg-white border-l-8 border-black z-[200] translate-x-full opacity-0 pointer-events-none transition-all duration-500 p-8 shadow-2xl">
+                                <div class="flex justify-between items-center mb-8">
+                                    <h5 class="text-2xl font-black uppercase">Quick View</h5>
+                                    <button class="material-symbols-outlined font-black">close</button>
+                                </div>
+                                <img alt="Preview" class="w-full aspect-square object-cover border-4 border-black mb-6"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDHLSbvSDpZzSerZdTsXJmdiSinuQX1TUH2-e7Y2TTgel-F71fY8Hlx6IVEVPaU2cpkbTesra9mODHayy4HKMwMdjzpjof4xj8vyE7jf-xi6qcaEu6wHJLsA5wLhZkBqTvSg_ai2hd3jfiEuATW-5rpBd1hFoKsqn1tGmAcWd97_HX5dA-JowE-x4m5NZ8kC982ynhCKPAQ25SomQPGooj5SY8CzHB1PuOIPWQdY7xu6JHvIgiZAqmWahM8Ra_y-k5ps3j--c2hCXY" />
+                                <p class="font-bold mb-4">Precision engineered timepiece for the modern nomad.</p>
+                                <button class="neo-brutalism-button w-full bg-vibrant-pink">ADD TO CART</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="col-span-12 md:col-span-6 lg:col-span-3 neo-brutalism-card product-card bg-vibrant-yellow flex flex-col relative group mt-12 md:mt-0">
+                    <div class="p-4 border-b-4 border-black flex justify-between items-center bg-white">
+                        <div class="flex flex-col">
+                            <h4 class="font-black uppercase text-lg leading-none">Lumina 35mm</h4>
+                            <span class="pulse-viewing text-[10px] font-black text-vibrant-blue">42 PEOPLE
+                                LOOKING</span>
+                        </div>
+                    </div>
+                    <div class="flex-1 aspect-square overflow-hidden relative">
+                        <img alt="Camera" class="product-img w-full h-full object-cover"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDbvoWe6Cy0e0gC_7rR2VODo9bpP5N5g5i3nuEslETh3arfZgsAPXk_m0dQxBbApeyBJylZy8Be4sGD2yMkV4CW5JsfLA4aLVtlSyCD080LxeD8kIor6S4ycU16Q5d_zR5CKed3R4k4yiCbAtbvaTLPHxLSswtMqqmM3QFrlJS0RpVrMZwlFDVN4U2svX5gT3IJh-8rR-5kDrXGWp3uQZbpLoPUkBYBSh-xJrnpg4_1ec7xvHMG6EOUWPoiJkgNJE7zGTM2hjrxELM" />
+                        <button
+                            class="wishlist-heart absolute bottom-4 right-4 bg-white border-4 border-black p-2 opacity-0 scale-50 transition-all">
+                            <span class="material-symbols-outlined text-vibrant-pink fill-1">favorite</span>
+                        </button>
+                    </div>
+                    <div class="p-4 bg-white border-t-4 border-black flex justify-between items-center">
+                        <span class="font-black text-xl">$420.00</span>
+                        <div class="relative">
+                            <button
+                                class="quick-view-trigger material-symbols-outlined font-black text-3xl hover:text-vibrant-blue transition-colors">add_circle</button>
+                            <div
+                                class="quick-view-modal fixed top-0 right-0 h-full w-96 bg-white border-l-8 border-black z-[200] translate-x-full opacity-0 pointer-events-none transition-all duration-500 p-8 shadow-2xl text-black">
+                                <div class="flex justify-between items-center mb-8">
+                                    <h5 class="text-2xl font-black uppercase">Quick View</h5>
+                                    <button class="material-symbols-outlined font-black">close</button>
+                                </div>
+                                <img alt="Preview" class="w-full aspect-square object-cover border-4 border-black mb-6"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDbvoWe6Cy0e0gC_7rR2VODo9bpP5N5g5i3nuEslETh3arfZgsAPXk_m0dQxBbApeyBJylZy8Be4sGD2yMkV4CW5JsfLA4aLVtlSyCD080LxeD8kIor6S4ycU16Q5d_zR5CKed3R4k4yiCbAtbvaTLPHxLSswtMqqmM3QFrlJS0RpVrMZwlFDVN4U2svX5gT3IJh-8rR-5kDrXGWp3uQZbpLoPUkBYBSh-xJrnpg4_1ec7xvHMG6EOUWPoiJkgNJE7zGTM2hjrxELM" />
+                                <p class="font-bold mb-4">Analog soul, digital heart. The perfect street photography
+                                    companion.</p>
+                                <button class="neo-brutalism-button w-full bg-vibrant-yellow">ADD TO CART</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="col-span-12 lg:col-span-4 neo-brutalism-card bg-black text-white p-12 flex flex-col items-center justify-center text-center gap-6">
+                    <div
+                        class="relative w-48 h-48 border-8 border-vibrant-green rounded-full flex items-center justify-center overflow-hidden">
+                        <div class="absolute inset-0 border-[20px] border-dotted border-white/20 spin-slow"></div>
+                        <span class="material-symbols-outlined text-7xl text-vibrant-green">casino</span>
+                    </div>
+                    <div>
+                        <h3 class="text-3xl font-black uppercase italic mb-2">Feeling Lucky?</h3>
+                        <p class="font-bold text-slate-400">Spin for up to 50% OFF your next order!</p>
+                    </div>
+                    <button class="neo-brutalism-button bg-vibrant-green text-black w-full text-xl">SPIN TO WIN</button>
+                </div>
+                <div
+                    class="col-span-12 lg:col-span-8 neo-brutalism-card product-card bg-vibrant-blue p-0 flex flex-col md:flex-row relative group">
+                    <div class="w-full md:w-1/2 aspect-square overflow-hidden relative">
+                        <img alt="Culinary"
+                            class="product-img w-full h-full object-cover border-r-0 md:border-r-4 border-black"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCakFSYcb5gtrjOnIqH8KEUeYKm4kIeHbaK9nc2QcgUC3x2BbJkIKhXoOKKijj5d4mt4weqdf7j9Ti91dRM6MHY5cKfLWlca1rTyS6YXEI3wyKdLhjYmJCsKmNPhmA1Qtd_Ts2ZrrSlQzWdg_tpupMxJGCAK7v1PxJyDL2_aQ0sXJSyMf5RUolRJ1-vz5592M0BPcwID0y1R3BUfELaOXiAqm2ci1wh2wHc6xTqU1MnRqwb0W_oIrVF5LPQaynY0Og38jKK4ui9LmA" />
+                        <button
+                            class="wishlist-heart absolute top-4 left-4 bg-white border-4 border-black p-2 opacity-0 scale-50 transition-all">
+                            <span class="material-symbols-outlined text-vibrant-pink fill-1">favorite</span>
+                        </button>
+                    </div>
+                    <div class="w-full md:w-1/2 p-12 flex flex-col justify-center gap-6 relative">
+                        <div class="flex items-center gap-4">
+                            <span
+                                class="bg-black text-vibrant-yellow px-4 py-1 self-start font-black uppercase text-sm">NEW
+                                SEASON</span>
+                            <span
+                                class="pulse-viewing bg-white text-black px-2 py-0.5 font-black text-[10px] border-2 border-black">3
+                                HOT INTEREST</span>
+                        </div>
+                        <h4 class="text-5xl font-black uppercase italic leading-none">Culinary<br />Excellence</h4>
+                        <p class="font-bold text-white/80">Professional grade tools for the modern kitchen aesthetic.
+                        </p>
+                        <div class="relative">
+                            <button class="quick-view-trigger neo-brutalism-button bg-white text-black self-start">VIEW
+                                DETAILS</button>
+                            <div
+                                class="quick-view-modal fixed top-0 right-0 h-full w-96 bg-white border-l-8 border-black z-[200] translate-x-full opacity-0 pointer-events-none transition-all duration-500 p-8 shadow-2xl text-black">
+                                <div class="flex justify-between items-center mb-8">
+                                    <h5 class="text-2xl font-black uppercase">Quick View</h5>
+                                    <button class="material-symbols-outlined font-black">close</button>
+                                </div>
+                                <img alt="Preview" class="w-full aspect-square object-cover border-4 border-black mb-6"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuCakFSYcb5gtrjOnIqH8KEUeYKm4kIeHbaK9nc2QcgUC3x2BbJkIKhXoOKKijj5d4mt4weqdf7j9Ti91dRM6MHY5cKfLWlca1rTyS6YXEI3wyKdLhjYmJCsKmNPhmA1Qtd_Ts2ZrrSlQzWdg_tpupMxJGCAK7v1PxJyDL2_aQ0sXJSyMf5RUolRJ1-vz5592M0BPcwID0y1R3BUfELaOXiAqm2ci1wh2wHc6xTqU1MnRqwb0W_oIrVF5LPQaynY0Og38jKK4ui9LmA" />
+                                <p class="font-bold mb-4">Elevate your kitchen experience with these professional-grade
+                                    tools.</p>
+                                <button class="neo-brutalism-button w-full bg-vibrant-blue text-white">ADD TO
+                                    CART</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="bg-vibrant-yellow border-t-8 border-black py-20 px-6">
+            <div class="max-w-7xl mx-auto flex flex-col lg:flex-row gap-20 items-center">
+                <div class="lg:w-1/2">
+                    <h3 class="text-6xl font-black uppercase italic tracking-tighter mb-6">DON'T MISS<br />THE NEXT
+                        DROP.</h3>
+                    <p class="text-xl font-bold uppercase mb-8">Join 50,000+ trendsetters receiving early access.</p>
+                    <form class="flex flex-col sm:flex-row gap-0" onsubmit="return false">
+                        <input
+                            class="flex-1 border-4 border-black p-4 font-black uppercase placeholder-black/50 focus:ring-0"
+                            placeholder="YOUR@EMAIL.COM" type="email" />
+                        <button class="neo-brutalism-button bg-black text-white border-l-0">SUBSCRIBE</button>
+                    </form>
+                </div>
+                <div class="lg:w-1/2 grid grid-cols-2 gap-12 w-full font-black uppercase">
+                    <div class="space-y-4">
+                        <h5 class="text-2xl underline decoration-4 decoration-vibrant-pink">SHOP</h5>
+                        <ul class="space-y-2">
+                            <li><a class="hover:text-vibrant-pink" href="#">New Arrivals</a></li>
+                            <li><a class="hover:text-vibrant-pink" href="#">Best Sellers</a></li>
+                            <li><a class="hover:text-vibrant-pink" href="#">Exclusives</a></li>
+                        </ul>
+                    </div>
+                    <div class="space-y-4">
+                        <h5 class="text-2xl underline decoration-4 decoration-vibrant-blue">HELP</h5>
+                        <ul class="space-y-2">
+                            <li><a class="hover:text-vibrant-blue" href="#">Shipping</a></li>
+                            <li><a class="hover:text-vibrant-blue" href="#">Returns</a></li>
+                            <li><a class="hover:text-vibrant-blue" href="#">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="bg-black text-white py-12 px-6 relative z-10">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+            <div class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-4xl text-vibrant-yellow">bolt</span>
+                <span class="text-2xl font-black tracking-tighter uppercase italic">Trend.</span>
+            </div>
+            <p class="font-bold text-slate-500">© 2024 TRENDSETTER CORP. ALL RIGHTS RESERVED.</p>
+            <div class="flex gap-8 text-xl">
+                <a class="hover:text-vibrant-pink" href="#"><span class="material-symbols-outlined">public</span></a>
+                <a class="hover:text-vibrant-blue" href="#"><span
+                        class="material-symbols-outlined">alternate_email</span></a>
+                <a class="hover:text-vibrant-green" href="#"><span class="material-symbols-outlined">share</span></a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>
